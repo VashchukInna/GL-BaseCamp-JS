@@ -84,7 +84,6 @@ function Private() {
     this.a = function () {
         console.log(myVar);
     }
-
 }
 
 var obj = new Private();
