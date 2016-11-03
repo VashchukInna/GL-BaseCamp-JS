@@ -26,16 +26,24 @@ function include(array, obj) {
  Задача на 5+: сделать так, чтобы кастомный логгер не "ломал" коллстек.
  */
 function createLogger(logName) {
-    return function (dataString) {
+    return function () {
         var date = new Date();
         var isoString = date.toISOString();
-        var finalString = isoString + " " + logName + ": " + dataString;
+        var finalString = isoString + ' ' + logName + ': ';
+        for (i = 0; i < arguments.length; i++) {
+            if (typeof arguments[i] === 'string') {
+                finalString += ' ' + arguments[i];
+            } else if (typeof arguments[i] === 'object') {
+                finalString += ' Object ' + JSON.stringify(arguments[i]);
+            }
+        }
         return finalString;
     };
 }
-
-var myLogger = createLogger('My Logger');
+var myLogger = createLogger('My Logger:');
 console.log(myLogger('some data')); //2016-10-30T10:24:20.346Z My Logger: some data
+console.log(myLogger({data: 1}));
+console.log(myLogger('My data is -', {data: 1}));
 
 
 //Опциональное практическое задание
