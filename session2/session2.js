@@ -42,8 +42,8 @@ function createLogger(logName) {
 }
 var myLogger = createLogger('My Logger:');
 console.log(myLogger('some data')); //2016-10-30T10:24:20.346Z My Logger: some data
-console.log(myLogger({data: 1}));
-console.log(myLogger('My data is -', {data: 1}));
+console.log(myLogger({data: 1})); //2016-11-03T22:03:55.098Z My Logger::  Object {"data":1}
+console.log(myLogger('My data is -', {data: 1})); //2016-11-03T21:49:06.711Z My Logger:  My data is - Object {"data":1}
 
 
 //Опциональное практическое задание
