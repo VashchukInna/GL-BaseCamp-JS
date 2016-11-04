@@ -26,24 +26,22 @@ function include(array, obj) {
  Задача на 5+: сделать так, чтобы кастомный логгер не "ломал" коллстек.
  */
 function createLogger(logName) {
-    return function () {
-        var date = new Date();
-        var isoString = date.toISOString();
-        var finalString = isoString + ' ' + logName + ': ';
-        for (i = 0; i < arguments.length; i++) {
-            if (typeof arguments[i] === 'string') {
-                finalString += ' ' + arguments[i];
-            } else if (typeof arguments[i] === 'object') {
-                finalString += ' Object ' + JSON.stringify(arguments[i]);
-            }
+    var date = new Date();
+    var isoString = date.toISOString();
+    var finalString = isoString + ' ' + logName + ': ';
+    for (i = 0; i < arguments.length; i++) {
+        if (typeof arguments[i] === 'string') {
+            finalString += ' ' + arguments[i];
+        } else if (typeof arguments[i] === 'object') {
+            finalString += ' Object ' + JSON.stringify(arguments[i]);
         }
-        return finalString;
-    };
+    }
+    return console.log.bind(console, finalString);
 }
-var myLogger = createLogger('My Logger:');
+var myLogger = createLogger('My Logger');
 console.log(myLogger('some data')); //2016-10-30T10:24:20.346Z My Logger: some data
-console.log(myLogger({data: 1})); //2016-11-03T22:03:55.098Z My Logger::  Object {"data":1}
-console.log(myLogger('My data is -', {data: 1})); //2016-11-03T21:49:06.711Z My Logger:  My data is - Object {"data":1}
+console.log(myLogger({data: 1})); //2016-11-04T18:15:37.611Z My Logger:  My Logger Object {data: 1}
+console.log(myLogger('My data is -', {data: 1})); //2016-11-04T18:15:37.611Z My Logger:  My Logger My data is - Object {data: 1}
 
 
 //Опциональное практическое задание
