@@ -20,3 +20,20 @@ function compareObjects(firstObject, secondObject, compare) {
 }
 console.log(compareObjects(firstObject, secondObject, 'age'));
 
+/*Создайте один объект с помощью литерала, второй через конструктор.*/
+var objectLiteral = {
+    name: "Anna",
+    age: 20
+};
+
+function ObjectConstructor(name, last_name, age) {
+    this.name = name
+    this.last_name = last_name;
+    this.age = age;
+}
+
+var ObjectConstructor = new ObjectConstructor('Barbara', 'Allison', 30);
+
+/*Вызовите написанную функцию и передайте два созданных объекта и свойство для сравнения*/
+console.log(compareObjects(firstObject, secondObject, 'name'));
+
