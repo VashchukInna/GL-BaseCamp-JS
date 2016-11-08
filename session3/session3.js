@@ -180,3 +180,26 @@ function deepCopy(objectToCopy) {
     // efficient and fast JavaScript deep copy
     return JSON.parse(JSON.stringify(objectToCopy));
 }
+
+var objectToClone = [
+    {
+        name: 'Inna',
+        age: 20
+    },
+    {
+        name: 'Anna',
+        age: 26
+    },
+    {
+        name: 'Helen',
+        age: 32
+    }];
+function deepCopyObject(objectToClone) {
+    var clone = {};
+    for (var i = 0; i < objectToClone.length; i++) {
+        var isObject = objectToClone[i] != null && typeof(objectToClone[i]) == "object";
+        clone[i] = isObject ? deepCopyObject(objectToClone[i]) : objectToClone[i];
+    }
+    return clone;
+}
+console.log(deepCopyObject(objectToClone));
