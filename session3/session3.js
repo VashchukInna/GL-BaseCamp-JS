@@ -180,4 +180,3 @@ function deepCopy(objectToCopy) {
     // efficient and fast JavaScript deep copy
     return JSON.parse(JSON.stringify(objectToCopy));
 }
-
