@@ -140,7 +140,7 @@ describe('OOP in JavaScript', function() {
     });
 
     it('should not be possible to begin journey without hero and monsters', function() {
-      expect(game.beginJourney).toThrowError("Cannot start journey, populate the world with hero and mosters first");
+      expect(game.beginJourney).toThrowError("Cannot start journey, populate the world with hero and monsters first");
     });
   });
 
@@ -200,7 +200,7 @@ describe('OOP in JavaScript', function() {
     })
 
 
-    it('should not be possible initiate fight between hero and moster, if game is not in "In progress" state', function() {
+    it('should not be possible initiate fight between hero and monster, if game is not in "In progress" state', function() {
       expect(game.fight).toThrowError("Begin your journey to start fighting monsters");
     });
 
@@ -246,7 +246,7 @@ describe('OOP in JavaScript', function() {
     it('Should not be possible to finish game, after all monsters are dead', function() {
       game.fight();
       var finishResult = game.finishJourney();
-      expect(finishResult).toEqual("The Game is finished. Monstrs are dead. Congratulations");
+      expect(finishResult).toEqual("The Game is finished. Monsters are dead. Congratulations");
       expect(game.status).toBe("Finished")
     });
   });
