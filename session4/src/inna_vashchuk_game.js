@@ -35,13 +35,13 @@ var monsterClasses = {
 };
 
 var statuses = {
-    idle      : "Idle",
-    progress  : "In progress",
-    finished  : "Finished"
+    idle: "Idle",
+    progress: "In progress",
+    finished: "Finished"
 };
 
 var gameData = {
-    status : statuses,
+    status: statuses,
     hero: heroClasses,
     monsters: monsterClasses
 };
@@ -60,27 +60,27 @@ function Hero(name, heroClass) {
     this.damage = heroClasses[heroClass]['damage'];
 };
 
-Hero.prototype.getName = function() {
+Hero.prototype.getName = function () {
     return this.name;
 };
 
-Hero.prototype.getCharClass = function() {
+Hero.prototype.getCharClass = function () {
     return this.charClass;
 };
 
-Hero.prototype.attack = function(target) {
+Hero.prototype.attack = function (target) {
     if (target.getCharClass() === ('warrior' && 'rogue' && 'sorcerer')) {
         return "I will attack only monsters";
     }
 
     target.life -= this.damage;
     target.life = Math.max(0, target.life);
-    var attackMessage = (target.life == 0) ? (target.getCharClass() +' killed') : ('done ' + this.damage + ' damage to ' + target.getCharClass());
+    var attackMessage = (target.life == 0) ? (target.getCharClass() + ' killed') : ('done ' + this.damage + ' damage to ' + target.getCharClass());
     return "Hero attacked, " + attackMessage;
 };
 
 
-function Monster (monsterClass) {
+function Monster(monsterClass) {
     if (Object.keys(monsterClasses).indexOf(monsterClass) == -1) {
         throw new Error('Incorrect character class provided');
         return;
@@ -91,32 +91,32 @@ function Monster (monsterClass) {
     this.damage = monsterClasses[monsterClass]['damage'];
 };
 
-Monster.prototype.getCharClass = function() {
+Monster.prototype.getCharClass = function () {
     return this.charClass;
 };
 
-Monster.prototype.getName = function() {
+Monster.prototype.getName = function () {
     return 'I am ' + this.charClass + ' I don`t have name';
 };
 
-Monster.prototype.attack = function(target) {
+Monster.prototype.attack = function (target) {
     if (target.getCharClass() === 'warrior') {
         return "I will attack only Hero";
     }
 
     target.life -= this.damage;
     target.life = Math.max(0, target.life);
-    var attackMessage = (target.life == 0) ? (target.getCharClass() +' killed') : ('done ' + this.damage + ' damage to ' + target.getCharClass());
+    var attackMessage = (target.life == 0) ? (target.getCharClass() + ' killed') : ('done ' + this.damage + ' damage to ' + target.getCharClass());
     return "Monster attacked, " + attackMessage;
 };
 
-function Game(){
+function Game() {
     this.status = gameData['status']['idle'];
     this.hero;
     this.monsters = [];
 };
 
-Game.prototype.beginJourney = function() {
+Game.prototype.beginJourney = function () {
     if (this.status !== "Idle" || this.hero === undefined || this.monsters.length != 2) {
         throw new Error('Cannot start journey, populate the world with hero and monsters first');
         return;
@@ -125,7 +125,7 @@ Game.prototype.beginJourney = function() {
     return 'Your journey has started, fight monsters';
 };
 
-Game.prototype.addHero = function(heroClass) {
+Game.prototype.addHero = function (heroClass) {
 
     if (Object.keys(heroClasses).indexOf(heroClass.getCharClass().toLowerCase()) === -1) {
         throw new Error('Only hero instance can be hero');
@@ -140,9 +140,9 @@ Game.prototype.addHero = function(heroClass) {
 
 };
 
-Game.prototype.addMonster = function(monsterClass) {
+Game.prototype.addMonster = function (monsterClass) {
     if (Object.keys(monsterClasses).indexOf(monsterClass.getCharClass().toLowerCase()) === -1) {
-        throw new Error('Only monster Instances can become monsters');
+        throw new Error('Only monster instances can become monsters');
         return;
     } else if (this.monsters.length == maxMonsters) {
         throw new Error('Only 2 monsters can exist');
@@ -154,7 +154,7 @@ Game.prototype.addMonster = function(monsterClass) {
 
 };
 
-Game.prototype.fight = function() {
+Game.prototype.fight = function () {
     if (this.status !== gameData['status']['progress']) {
         throw new Error('Begin your journey to start fighting monsters');
         return;
@@ -193,6 +193,6 @@ Game.prototype.finishJourney = function () {
         this.status = gameData['status']['finished'];
         return "The Game is finished. Hero is dead :(";
     } else {
-        return 'Don`t stop. Some monsters are still alive. Kill`em all';
+        return 'Don`t stop. Some monsters are still alive. Kill them all';
     }
 };
