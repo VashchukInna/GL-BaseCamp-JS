@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>session7-task2</title>
+</head>
+<body>
+<div class="list">
+    <h1>Task2</h1>
+    <ul id="list-of-numbers">
+        <li class="first">1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</div>
+<script>
+    /* 2. Создать функцию аналог функции DOM insertBefore,
+     но вставляет не до, а после указанного элемента.
+     */
+    function insertAfter(element, referenceElement) {
+        referenceElement.parentNode.insertBefore(element, referenceElement.nextSibling);
+    }
+
+    var ul = document.getElementById('list-of-numbers');
+    var newLi = document.createElement('li');
+    var text = document.createTextNode('1.2');
+    newLi.appendChild(text);
+    insertAfter(newLi, ul.firstElementChild); // insert li '1.1' after first li '1'
+</script>
+</body>
+</html>

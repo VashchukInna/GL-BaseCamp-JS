@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>session7-task1</title>
+</head>
+<body>
+<div class="list">
+    <h1>Task1</h1>
+    <ul id="list-of-numbers">
+        <li class="first">1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</div>
+<script>
+    /*1. Создать функцию, которая принимает строку селектор и возвращает:
+     - undefined - если ничего не найдено
+     - найденную ноду - если она одна
+     - первую найденную ноду - если их несколько
+     */
+    function showSelector(str) {
+        var result;
+        if (typeof str === 'string') {
+            result = document.querySelectorAll(str);
+            if (result.length === 0) {
+                result = undefined;
+            } else {
+                return result[0];
+            }
+            return result;
+        }
+    }
+
+    console.log(showSelector('numbers')); //undefined
+    console.log(showSelector('h1')); // first node
+    console.log(showSelector('div')); //node
+</script>
+</body>
+</html>

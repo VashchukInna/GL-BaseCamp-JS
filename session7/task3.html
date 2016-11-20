@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>session7-task3</title>
+</head>
+<body>
+<lego></lego>
+<chucknorris speed="5"></chucknorris>
+<script>
+    /*3. Создать функцию, которая выдает значение атрибута или ставит его значение.
+
+     Чтение.
+     Что имеется в виду - Допустим есть элемент:
+
+     <titanic style="float:none"></titanic>
+
+     Если передать в функцию 'style' - она должна выдать "float:none"
+
+     <ninja color="black" visibility="hidden"></ninja>
+
+     Если передать в функцию 'color' - она должна выдать "black"
+
+     Установка.
+     Что имеется в виду - Допустим есть элемент:
+
+     <lego></lego>
+
+     Если передать в функцию два параметра - атрибут и значение, то нода должна выглядеть
+
+     <lego style="display:block"></lego>
+
+
+     Если значение этого атрибута уже задано, устанавливается новое значение.
+
+     Было:
+     <chucknorris speed="5"></chucknorris>
+
+     После вызова функции с передачей атрибута и значения (speed Infinity):
+     <chucknorris speed="Infinity"></chucknorris>
+     */
+    function attributes(element, attributeName, attributeValue) {
+        if (attributeValue === 0) {
+            element.getAttribute(attributeName);
+        } else {
+            element.setAttribute(attributeName, attributeValue);
+        }
+    }
+
+    var chuckNorris = document.getElementsByTagName('chucknorris')[0];
+    var lego = document.getElementsByTagName('lego')[0];
+    attributes(lego, 'style', 'display: block');
+    attributes(chuckNorris, 'speed', 'Infinity');
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>session7-task4</title>
+</head>
+<body>
+<script>
+    /*4. С помощью JS создайте шахматное поле:
+     - контейнер поля
+     - 64 ребёнка (ячейки) элементы (проще позиционировать с помощью float)
+     - ячейки раскрашены белым и черным
+     - нужные атрибуты и стили задавайте с помощью JS
+     */
+    var chessDesk = document.createElement('div');
+
+    chessDesk.style.setProperty('width', '344px');
+    chessDesk.style.setProperty('height', '344px');
+    chessDesk.style.setProperty('border', '1px solid black');
+    chessDesk.style.setProperty('margin', '0 auto');
+    document.body.appendChild(chessDesk);
+
+    var fragment = document.createDocumentFragment();
+    for (var i = 0; i < 64; i++) {
+        var element = document.createElement('div');
+        element.style.setProperty('float', 'left');
+        element.style.setProperty('width', '43px');
+        element.style.setProperty('height', '43px');
+
+
+        element.style.backgroundColor = parseInt((i / 8) + i) % 2 == 0 ? 'white' : 'black';
+        fragment.appendChild(element);
+    }
+    chessDesk.appendChild(fragment);
+</script>
+</body>
+</html>
