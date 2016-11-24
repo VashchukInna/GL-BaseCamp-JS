@@ -1,0 +1,14 @@
+body {
+    background: url('../img/bg-star-wars.jpg') no-repeat;
+    background-size: cover;
+}
+
+.container {
+    width: 901px;
+    height: 432px;
+    margin: 0 auto;
+    opacity: 0.9;
+    margin-top: 54px;
+    background-color: #282727;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
