@@ -1,14 +1,109 @@
 body {
-    background: url('../img/bg-star-wars.jpg') no-repeat;
+    background: url("../img/bg-star-wars.jpg") no-repeat;
     background-size: cover;
 }
 
 .container {
-    width: 901px;
-    height: 432px;
+    background-color: black;
+    box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    width: 1073px;
+    height: 456px;
     margin: 0 auto;
-    opacity: 0.9;
+    opacity: 0.8;
     margin-top: 54px;
-    background-color: #282727;
-    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 }
+
+@font-face {
+    font-family: Starjedi;
+    src: url(../fonts/Starjedi.woff);
+}
+
+h1 {
+    font-family: "Starjedi", sans-serif, arial;
+    color: white;
+    text-align: center;
+    font-size: 40px;
+}
+
+.content-left {
+    width: 140px;
+    margin: 13px;
+    padding-left: 31px;
+}
+
+.avatar {
+    width: 240px;
+    height: 206px;
+}
+
+.buttons {
+    margin-left: 4px;
+    margin-top: 45px;
+    width: 225px;
+}
+
+.btn {
+    border: 4px solid black;
+    font-weight: bold;
+    width: 111px;
+    height: 43px;
+    text-transform: uppercase;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.prev {
+    margin-right: -3px;
+    border-bottom-left-radius: 12px;
+    border-top-left-radius: 12px;
+}
+
+.prev:hover {
+    background-color: lightskyblue;
+}
+
+.next {
+    margin-left: -3px;
+    border-bottom-right-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.next:hover {
+    background-color: midnightblue;
+}
+
+li {
+    font-family: Arial, sans-serif;
+    color: white;
+    line-height: 28px;
+    font-size: 17px;
+    list-style: none;
+    margin-left: 40px;
+}
+
+.content-right {
+    margin-left: 289px;
+}
+
+.info {
+    margin-top: -302px;
+}
+
+.films {
+    margin-left: 336px;
+    margin-top: -237px;
+}
+
+.load {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    opacity: 1;
+    background: url('../img/loading.gif') 50% 40% no-repeat;
+}
+
+
