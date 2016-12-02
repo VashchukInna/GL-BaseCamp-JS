@@ -1,0 +1,36 @@
+body {
+    background-color: aliceblue;
+}
+
+.main-block {
+    width: 270px;
+    height: 230px;
+    margin: 40px auto;
+    margin-top: 100px;
+}
+
+.col {
+    width: 60px;
+    height: 60px;
+    border: 3px solid black;
+    font-size: 40px;
+    color: darkblue;
+    text-align: center;
+    background-color: lightgreen;
+    cursor: pointer;
+}
+
+.row {
+    display: flex;
+}
+
+button {
+    width: 196px;
+    height: 41px;
+    background-color: cadetblue;
+    color: white;
+    margin-left: 36px;
+    font-size: 20px;
+    margin-top: 45px;
+    cursor: pointer;
+}
