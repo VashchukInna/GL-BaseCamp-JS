@@ -11,6 +11,7 @@ M.getData = function () {
     }
     return JSON.parse(localStorage.getItem('saveData'));
 };
+M.data = M.getData();
 
 //set data in localStorage
 M.setData = function (data) {
@@ -18,8 +19,6 @@ M.setData = function (data) {
         localStorage.setItem('saveData', JSON.stringify(data));
     }
 };
-var array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ' '];
-M.setData(array);
 
 //draw battlefield
 function drawPuzzles() {
@@ -68,9 +67,9 @@ function shuffleOfNumbers() {
 
     var mainBlock = document.getElementsByClassName('main-block')[0];
     mainBlock.textContent = '';
+    C.handler();
     data = data.sort(setRandom);
     M.setData(data);
-    C.handler();
 }
 
 //move elements
@@ -103,34 +102,25 @@ function moveValues(event) {
         cell.previousSibling.textContent = cell.textContent;
         cell.textContent = ' ';
     }
-    var data = M.data;
-    for (var i = 0; i < 16; i++) {
-        data[i] = document.getElementsByClassName('col')[i].textContent;
-    }
     C.checkWin();
 }
 
 //check if user wins
 C.checkWin = function () {
-    var data = M.data;
-    var isCorrect = true;
+    var data = JSON.stringify(M.data);
     for (var i = 1; i <= 15; i++) {
-        if (data[i - 1] != i) {
-            isCorrect = false;
-            break;
-        }
+        if (data == 15)
+            alert('Congratulation! You win!');
     }
-    if (isCorrect) alert('Congratulation! You win!');
 };
 
 //initialize the game
 C.handler = function () {
-    M.data = M.getData();
+    M.setData();
     V.render(M);
     var main = document.getElementsByClassName('main')[0];
     main.addEventListener('click', moveValues);
     var newGame = document.getElementsByClassName('newGame')[0];
     newGame.addEventListener('click', shuffleOfNumbers);
-
 };
 window.onload = C.handler;
